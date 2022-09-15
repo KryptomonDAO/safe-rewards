@@ -35,7 +35,7 @@ export interface CollectibleTransfer {
   receiver: string;
   tokenAddress: string;
   tokenName?: string;
-  tokenId: BigNumber;
+  tokenId: string;
   amount?: BigNumber;
   receiverEnsName: string | null;
   hasMetaData: boolean;

@@ -8,7 +8,7 @@ import { CollectibleTokenMetaInfo, useCollectibleTokenInfoProvider } from "../..
 
 type TokenProps = {
   tokenAddress: string;
-  id: BigNumber;
+  id: string;
   token_type: "erc721" | "erc1155";
   hasMetaData: boolean;
 };

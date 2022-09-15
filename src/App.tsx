@@ -60,7 +60,7 @@ const App: React.FC = () => {
               {!pendingTx && (
                 <>
                   <Breadcrumb>
-                    <BreadcrumbElement text="CSV Transfer File" iconType="paste" />
+                    <BreadcrumbElement text="CSV Mint File" iconType="paste" />
                   </Breadcrumb>
                   <CSVForm updateTransferTable={setTokenTransfers} setParsing={setParsing} />
                   <Divider />

@@ -30,7 +30,7 @@ export interface CSVFormProps {
 
 export const CSVForm = (props: CSVFormProps): JSX.Element => {
   const { updateTransferTable, setParsing } = props;
-  const [csvText, setCsvText] = useState<string>("token_type,token_address,receiver,amount,id");
+  const [csvText, setCsvText] = useState<string>("token_address,receiver,amount,id");
 
   const { setCodeWarnings, setMessages } = useContext(MessageContext);
 
@@ -74,35 +74,6 @@ export const CSVForm = (props: CSVFormProps): JSX.Element => {
             updateTransferTable(transfers);
             // If we have no balances we dont need to check them.
             if (assetBalance || collectibleBalance) {
-              const insufficientBalances = checkAllBalances(assetBalance, collectibleBalance, transfers);
-              setMessages(
-                insufficientBalances.map((insufficientBalanceInfo) => {
-                  if (
-                    insufficientBalanceInfo.token_type === "erc20" ||
-                    insufficientBalanceInfo.token_type === "native"
-                  ) {
-                    if (insufficientBalanceInfo.token_type === "native") {
-                      insufficientBalanceInfo.token = tokenInfoProvider.getNativeTokenSymbol();
-                    }
-                    return {
-                      message: `Insufficient Balance: ${insufficientBalanceInfo.transferAmount} of ${insufficientBalanceInfo.token}`,
-                      severity: "error",
-                    };
-                  } else {
-                    if (insufficientBalanceInfo.isDuplicate) {
-                      return {
-                        message: `Duplicate transfer for ERC721 token ${insufficientBalanceInfo.token} with ID ${insufficientBalanceInfo.id}`,
-                        severity: "warning",
-                      };
-                    } else {
-                      return {
-                        message: `Collectible ERC721 token ${insufficientBalanceInfo.token} with ID ${insufficientBalanceInfo.id} is not held by this safe`,
-                        severity: "error",
-                      };
-                    }
-                  }
-                }),
-              );
             }
 
             setCodeWarnings(warnings);
@@ -130,12 +101,12 @@ export const CSVForm = (props: CSVFormProps): JSX.Element => {
   return (
     <Form>
       <Text size="xl">
-        Send arbitrarily many distinct tokens, to arbitrarily many distinct accounts with various different values from
+        Mint arbitrarily many distinct tokens, to arbitrarily many distinct accounts with various different values from
         a CSV file in a single transaction.
       </Text>
       <Text size="lg">
         Upload, edit or paste your asset transfer CSV <br /> (
-        <span style={{ fontFamily: "monospace" }}>token_type,token_address,receiver,amount,id</span>)
+        <span style={{ fontFamily: "monospace" }}>token_address,receiver,amount,id</span>)
       </Text>
 
       <CSVEditor csvText={csvText} onChange={onChangeTextHandler} />

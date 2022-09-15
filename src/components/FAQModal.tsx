@@ -14,7 +14,7 @@ export const FAQModal: () => JSX.Element = () => {
         <GenericModal
           withoutBodyPadding={false}
           onClose={() => setShowHelp(false)}
-          title={<Title size="lg">How to use the CSV Airdrop App</Title>}
+          title={<Title size="lg">How to use the Kryptomon CSV Rewards App</Title>}
           body={
             <div>
               <Title size="md" strong>
@@ -22,9 +22,8 @@ export const FAQModal: () => JSX.Element = () => {
               </Title>
               <Text size="lg">
                 <p>
-                  This app can batch multiple transfers of ERC20, ERC721, ERC1155 and native tokens into a single
-                  transaction. It's as simple as uploading / copy & pasting a single CSV transfer file and hitting the
-                  submit button.
+                  This app can batch multiple mint of NFT items for the Kryptomon Metaverse. It's as simple as uploading
+                  / copy & pasting a single CSV transfer file and hitting the submit button.
                 </p>
                 <p>
                   {" "}
@@ -40,17 +39,9 @@ export const FAQModal: () => JSX.Element = () => {
                 <ul>
                   <li>
                     <code>
-                      <b>token_type</b>
-                    </code>
-                    : The type of token that is being transferred. One of <code>erc20,nft</code> or <code>native</code>.
-                    NFT Tokens can be either ERC721 or ERC1155.
-                  </li>
-                  <li>
-                    <code>
                       <b>token_address</b>
                     </code>
-                    : Ethereum address of ERC20 token to be transferred. This has to be left blank for native (ETH)
-                    transfers.
+                    : Ethereum address of the Kryptomon NFT Diamond token.
                   </li>
                   <li>
                     <code>
@@ -62,14 +53,13 @@ export const FAQModal: () => JSX.Element = () => {
                     <code>
                       <b>amount</b>
                     </code>
-                    : the amount of token to be transferred. This can be left blank for erc721 transfers.
+                    : the amount of token to be minted.
                   </li>
                   <li>
                     <code>
                       <b>id</b>
                     </code>
-                    : The id of the collectible token (erc721 or erc1155) to transfer. This can be left blank for native
-                    and erc20 transfers.
+                    : The id of the collectible token (erc1155) to minted.
                   </li>
                 </ul>
                 <p>
@@ -84,22 +74,6 @@ export const FAQModal: () => JSX.Element = () => {
                   Sample Transfer File
                 </Link>
               </div>
-              <Divider />
-              <Title size="md" strong>
-                Native Token Transfers
-              </Title>
-              <Text size="lg">
-                Since native tokens do not have a token address, you must leave the <code>token_address</code> column
-                blank for native transfers.
-              </Text>
-              <Divider />
-              <Title size="md" strong>
-                BEP-20 Transfers
-              </Title>
-              <Text size="lg">
-                As the BEP-20 standard is an extension of ERC20 they are supported by this app. Just pass{" "}
-                <code>erc20</code> as <code>token_id</code>.
-              </Text>
               <Divider />
               <Title size="md" strong>
                 Donations

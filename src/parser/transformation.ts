@@ -17,7 +17,7 @@ interface PrePayment {
 
 interface PreCollectibleTransfer {
   receiver: string;
-  tokenId: BigNumber;
+  tokenId: string;
   tokenAddress: string;
   tokenType: "nft";
   amount?: BigNumber;
@@ -63,9 +63,9 @@ export const transform = (
       break;
     default:
       // Fallback so people can still use the old csv file format
-      transformAsset(
-        { ...row, token_type: "erc20", receiver: trimmedReceiver },
-        tokenInfoProvider,
+      transformCollectible(
+        { ...row, token_type: "nft", receiver: trimmedReceiver },
+        erc721InfoProvider,
         ensResolver,
         callback,
       );
@@ -158,7 +158,7 @@ export const transformCollectible = (
   const prePayment: PreCollectibleTransfer = {
     // avoids errors from getAddress. Invalid addresses are later caught in validateRow
     tokenAddress: normalizeAddress(row.token_address),
-    tokenId: new BigNumber(row.id ?? ""),
+    tokenId: row.id ?? "",
     receiver: normalizeAddress(row.receiver),
     tokenType: row.token_type,
     amount: new BigNumber(row.amount ?? ""),

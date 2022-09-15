@@ -1,8 +1,8 @@
 {
-  "short_name": "Safe Airdrop",
-  "name": "CSV Airdrop",
-  "description": "Upload your CSV transfer file to send arbitrarily many tokens of various amounts to a list of recipients.",
-  "iconPath": "logo.svg",
+  "short_name": "Kryptomon Safe Rewards",
+  "name": "Kryptomon Rewards",
+  "description": "Upload your Kryptomon CSV rewards file to mint arbitrarily many tokens of various amounts to a list of recipients.",
+  "iconPath": "logo.png",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

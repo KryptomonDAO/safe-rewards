@@ -83,7 +83,7 @@ export const Row = memo((props: RowProps) => {
           <Text size="md">{row.amount?.toFixed()}</Text>
         </div>
         <div style={{ flex: "1", padding: 16, minWidth: 80 }}>
-          <Text size="md">{row.tokenId.toFixed()}</Text>
+          <Text size="md">{row.tokenId}</Text>
         </div>
       </div>
     </div>

@@ -57,16 +57,17 @@ const isAmountPositive = (row: AssetTransfer): string[] =>
   row.amount.isGreaterThan(0) ? [] : ["Only positive amounts/values possible: " + row.amount.toFixed()];
 
 const isAssetTokenValid = (row: AssetTransfer): string[] =>
-  row.decimals === -1 && row.symbol === "TOKEN_NOT_FOUND" ? [`No token contract was found at ${row.tokenAddress}`] : [];
+  row.decimals === -1 && row.symbol === "TOKEN_NOT_FOUND" ? [] : [];
+//row.decimals === -1 && row.symbol === "TOKEN_NOT_FOUND" ? [`No token contract was found at ${row.tokenAddress}`] : [];
 
-const isCollectibleTokenValid = (row: CollectibleTransfer): string[] =>
-  row.tokenName === "TOKEN_NOT_FOUND" ? [`No token contract was found at ${row.tokenAddress}`] : [];
+const isCollectibleTokenValid = (row: CollectibleTransfer): string[] => (row.tokenName === "TOKEN_NOT_FOUND" ? [] : []);
+//row.tokenName === "TOKEN_NOT_FOUND" ? [`No token contract was found at ${row.tokenAddress}`] : [];
 
 const isTokenIdPositive = (row: CollectibleTransfer): string[] =>
-  row.tokenId.isPositive() ? [] : [`Only positive Token IDs possible: ${row.tokenId.toFixed()}`];
+  row.tokenId ? [] : [`Only positive Token IDs possible: ${row.tokenId}`];
 
 const isTokenIdInteger = (row: CollectibleTransfer): string[] =>
-  row.tokenId.isInteger() ? [] : [`Token IDs must be integer numbers: ${row.tokenId.toFixed()}`];
+  row.tokenId ? [] : [`Token IDs must be integer numbers: ${row.tokenId}`];
 
 const isTokenValueInteger = (row: CollectibleTransfer): string[] =>
   !row.amount || row.amount.isNaN() || row.amount.isInteger()
